@@ -57,13 +57,11 @@ class Robot():
             time.sleep(1)
 
     def status(self):
-        return self.current_status
+        print("%s status : %s [%s%% battery]"%(self.name, self.current_status, self.battery_level))
 
     def is_running(self):
         return (self.power == True)
-    """
-      Give your best code here ( •̀ ω •́ )✧
-    """
+
 
 def print_status(robot):
     print("%s status : %s"%(robot.name, robot.status()))
