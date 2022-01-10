@@ -1,4 +1,4 @@
-# seatech-python-object-lessons
+# SeaTech : Programmation orienté Objet Python
 
 Exemples de code destiné au cours "Programmation orienté Objet Python"
 

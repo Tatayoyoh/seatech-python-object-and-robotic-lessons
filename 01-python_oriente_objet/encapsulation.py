@@ -27,7 +27,7 @@ class Robot():
         ROBOT_COUNT -= 1
 
     """
-    Accessrors and Mutators
+    Encapsulation : Accessrors and Mutators
     """
 
     def stop(self):   
