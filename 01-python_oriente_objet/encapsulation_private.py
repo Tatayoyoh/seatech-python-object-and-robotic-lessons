@@ -23,7 +23,9 @@ class Robot():
     def name(self,new_name):
         self.__name = new_name
 
-r = Robot()
-r.name = "Termonator"
-r.move(100)
-print(r.name + "\nSpeed:", r.speed())
+
+if __name__ == '__main__':
+  r = Robot()
+  r.name = "Termonator"
+  r.move(100)
+  print(r.name + "\nSpeed:", r.speed())

@@ -40,12 +40,14 @@ class SurfaceRobot(LandTypeRobot):
         super().__init__(name, 'surface')
 
 
-ugv = GroundRobot('Wall.E')
-uav = AirRobot('Megacopter')
-usv = UnderseaRobot('Nautilus')
-uuv = SurfaceRobot('Titaniktou')
 
-ugv.status()
-uav.status()
-usv.status()
-uuv.status()
+if __name__ == '__main__':
+    ugv = GroundRobot('Wall.E')
+    uav = AirRobot('Megacopter')
+    usv = UnderseaRobot('Nautilus')
+    uuv = SurfaceRobot('Titaniktou')
+
+    ugv.status()
+    uav.status()
+    usv.status()
+    uuv.status()

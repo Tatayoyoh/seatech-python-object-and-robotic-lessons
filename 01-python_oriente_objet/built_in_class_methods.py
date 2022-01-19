@@ -48,42 +48,45 @@ class Robot():
     return (self.__SIZES[self.size] <= self.__SIZES[robot.size])
 
 
-# Let's call power rangers robots !
-blue = Robot('PowerRanger Blue robot', payloads=['camera'])
-yellow = Robot('PowerRanger Yellow robot ', payloads=['gun'])
-red = Robot('PowerRanger Red robot', payloads=['radar'])
-green = Robot('PowerRanger Green robot', payloads=['wings'])
 
-print(blue)
-print(yellow)
-print(red)
-print(green)
+if __name__ == '__main__':
+    
+  # Let's call power rangers robots !
+  blue = Robot('PowerRanger Blue robot', payloads=['camera'])
+  yellow = Robot('PowerRanger Yellow robot ', payloads=['gun'])
+  red = Robot('PowerRanger Red robot', payloads=['radar'])
+  green = Robot('PowerRanger Green robot', payloads=['wings'])
 
-print()
+  print(blue)
+  print(yellow)
+  print(red)
+  print(green)
 
-megazord = Robot('MEGAZORD', size='big') + blue + yellow + red + green
-print(megazord)
+  print()
 
-print("Let's check MEGAZORD stuff")
-for robot_payload in megazord:
-  print("  * found:",robot_payload)
+  megazord = Robot('MEGAZORD', size='big') + blue + yellow + red + green
+  print(megazord)
 
-print()
+  print("Let's check MEGAZORD stuff")
+  for robot_payload in megazord:
+    print("  * found:",robot_payload)
 
-optimus = Robot('OptimusPrime', payloads=['camera','gun','radar','wings'], size='big')
-print(optimus)
+  print()
 
-print()
-print("MEGAZORD == OptimusPrime ? %s" %(megazord == optimus))
-print("MEGAZORD != OptimusPrime ? %s" %(megazord != optimus))
-print("MEGAZORD < OptimusPrime ? %s" %(megazord < optimus))
-print("MEGAZORD == PowerRanger Blue robot ? %s" %(megazord == blue))
-print("PowerRanger Blue robot < OptimusPrime ? %s" %(blue < optimus))
-print("OptimusPrime >= PowerRanger Blue robot ? %s" %(optimus >= blue))
-print("OptimusPrime >= MEGAZORD ? %s" %(optimus >= megazord))
+  optimus = Robot('OptimusPrime', payloads=['camera','gun','radar','wings'], size='big')
+  print(optimus)
 
-print()
-memory_size = megazord.__sizeof__()
-print("MEGAZORD takes %sbytes in memory"%(memory_size))
+  print()
+  print("MEGAZORD == OptimusPrime ? %s" %(megazord == optimus))
+  print("MEGAZORD != OptimusPrime ? %s" %(megazord != optimus))
+  print("MEGAZORD < OptimusPrime ? %s" %(megazord < optimus))
+  print("MEGAZORD == PowerRanger Blue robot ? %s" %(megazord == blue))
+  print("PowerRanger Blue robot < OptimusPrime ? %s" %(blue < optimus))
+  print("OptimusPrime >= PowerRanger Blue robot ? %s" %(optimus >= blue))
+  print("OptimusPrime >= MEGAZORD ? %s" %(optimus >= megazord))
 
-print('\nDocumentation:', megazord.__doc__)
+  print()
+  memory_size = megazord.__sizeof__()
+  print("MEGAZORD takes %sbytes in memory"%(memory_size))
+
+  print('\nDocumentation:', megazord.__doc__)

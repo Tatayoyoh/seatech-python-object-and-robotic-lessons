@@ -34,21 +34,23 @@ class Robot:
     def calculate(arg1, arg2):
         print('La réponse est %s'%(arg1+arg2))
 
-# static method call
-Robot.calculate(20,22)
 
-# normal object creation
-r = Robot('Roger le robot', ['v8', 'joke generator'])
-print(r.name, r.payloads)
+if __name__ == '__main__':
+    # static method call
+    Robot.calculate(20,22)
 
-# call class methods
-print(r.get_original_name(), r.get_original_payloads())
+    # normal object creation
+    r = Robot('Roger le robot', ['v8', 'joke generator'])
+    print(r.name, r.payloads)
 
-# generate new robots from class methods
-r = Robot.war_robot('Terminator')
-print(r.name, r.payloads)
+    # call class methods
+    print(r.get_original_name(), r.get_original_payloads())
 
-r = Robot.peace_robot('Hippinator')
-print(r.name, r.payloads)
+    # generate new robots from class methods
+    r = Robot.war_robot('Terminator')
+    print(r.name, r.payloads)
+
+    r = Robot.peace_robot('Hippinator')
+    print(r.name, r.payloads)
 
 

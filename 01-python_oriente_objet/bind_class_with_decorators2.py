@@ -36,14 +36,14 @@ class Robot(RobotCore) :
         print("let's goooo")
 
 
+if __name__ == '__main__':
+    r = Robot(action_allowed=True)
+    r.fire()
+    r.run()
 
-r = Robot(action_allowed=True)
-r.fire()
-r.run()
+    print()
 
-print()
-
-r = Robot(action_allowed=False)
-r.fire()
-r.allow_action()
-r.run()
+    r = Robot(action_allowed=False)
+    r.fire()
+    r.allow_action()
+    r.run()

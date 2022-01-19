@@ -3,11 +3,13 @@ ROBOT_COUNT = 0
 class Robot():
     # Robot attributes
     name = "<unnamed>"
+    battery_level = 0
     
     # Constructor
-    def __init__(self, name=None):
+    def __init__(self, name=None, battery_level=0):
         if name:
             self.name = name
+        self.battery_level = battery_level
         global ROBOT_COUNT
         ROBOT_COUNT += 1
 
@@ -17,9 +19,19 @@ class Robot():
       global ROBOT_COUNT
       ROBOT_COUNT -= 1
 
+if __name__ == '__main__':
+    print(ROBOT_COUNT, ' robot(s) created')
+    r1 = Robot('Robotnik')
+    r2 = Robot()
 
-r = Robot('Robotnik')
+    print(ROBOT_COUNT, ' robot(s) created')
 
-print("Hello %s"%(r.name))
+    print("Hello %s"%(r1.name))
+    print("Hello %s"%(r2.name))
 
-del r
+    print('Destroy %s now'%(r1.name))
+    del r1
+
+    print(ROBOT_COUNT, ' robot(s) created')
+
+    print('End of program. Exit.')

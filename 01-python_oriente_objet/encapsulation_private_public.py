@@ -29,18 +29,20 @@ class Robot():
     @property
     def type(self):
         return self.__type
-        
-r = Robot()
-print(r.name)
-r.name = "Termonator"
-r.move(100)
-print(r.name)
-print(r.type)
-print("Speed:", r.speed())
 
-print()
-print(r.name2)
-r.name2 = 'Et vous ?'
-print(r.name2)
-print()
-print("On voit que déclarer '__name' en privé revient au même que déclarer 'name2' en publique niveau interface d'utilisation")
+
+if __name__ == '__main__':
+  r = Robot()
+  print(r.name)
+  r.name = "Termonator"
+  r.move(100)
+  print(r.name)
+  print(r.type)
+  print("Speed:", r.speed())
+
+  print()
+  print(r.name2)
+  r.name2 = 'Et vous ?'
+  print(r.name2)
+  print()
+  print("On voit que déclarer '__name' en privé revient au même que déclarer 'name2' en publique niveau interface d'utilisation")

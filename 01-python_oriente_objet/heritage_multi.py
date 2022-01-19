@@ -32,12 +32,14 @@ class Cyborg(Robot, Human):
         Human.__init__(self, sexe)
 
 
-cyborg = Cyborg('Deux Ex Machina', 'M')
 
-print(cyborg.name, 'sexe', cyborg.sexe)
-print('Charging battery...')
-cyborg.charge()
-cyborg.status()
-cyborg.eat('banana')
-cyborg.eat(['coca', 'chips'])
-cyborg.digest()
+if __name__ == '__main__':
+    cyborg = Cyborg('Deux Ex Machina', 'M')
+
+    print(cyborg.name, 'sexe', cyborg.sexe)
+    print('Charging battery...')
+    cyborg.charge()
+    cyborg.status()
+    cyborg.eat('banana')
+    cyborg.eat(['coca', 'chips'])
+    cyborg.digest()

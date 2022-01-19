@@ -18,27 +18,29 @@ class Robot():
         global ROBOT_COUNT
         ROBOT_COUNT -= 1
 
-# Python permet d'appeler directement la propriétés d'une classe
-print("\nPython permet d'appeler directement la propriétés d'une classe")
-print("Robot.name: ", Robot.name)
-print("Robot.power: ", Robot.power)
-try:
-    print(Robot.current_state)
-except AttributeError as e:
-    print("Robot.current_state: ", e)
 
-# Oh la belle instance de classe : naissance d'un objet
-print("\nNaissance de l'objet Robot")
-r = Robot(name='Terminator')
-print("Robot.name: ", r.name)
-print("Robot.power: ", r.power)
-print("Robot.current_state: ", r.current_state)
+if __name__ == '__main__':
+    # Python permet d'appeler directement la propriétés d'une classe
+    print("\nPython permet d'appeler directement la propriétés d'une classe")
+    print("Robot.name: ", Robot.name)
+    print("Robot.power: ", Robot.power)
+    try:
+        print(Robot.current_state)
+    except AttributeError as e:
+        print("Robot.current_state: ", e)
 
-# Ceci n'a pas bougé
-print("\nAppel de current_state toujours indisponible à partir de la classe")
-print("Robot.name: ", Robot.name)
-print("Robot.power: ", Robot.power)
-try:
-    print(Robot.current_state)
-except AttributeError as e:
-    print("Robot.current_state: ", e)
+    # Oh la belle instance de classe : naissance d'un objet
+    print("\nNaissance de l'objet Robot")
+    r = Robot(name='Terminator')
+    print("Robot.name: ", r.name)
+    print("Robot.power: ", r.power)
+    print("Robot.current_state: ", r.current_state)
+
+    # Ceci n'a pas bougé
+    print("\nAppel de current_state toujours indisponible à partir de la classe")
+    print("Robot.name: ", Robot.name)
+    print("Robot.power: ", Robot.power)
+    try:
+        print(Robot.current_state)
+    except AttributeError as e:
+        print("Robot.current_state: ", e)
