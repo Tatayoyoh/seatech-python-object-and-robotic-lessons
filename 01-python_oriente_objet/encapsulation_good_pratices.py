@@ -68,7 +68,7 @@ class Robot():
       
     def charge(self):   
         while self.__battery_level < 100:
-            self.__battery_level += 10
+            self.__battery_level += 20
             print("Charge is %s%%"%(self.battery_level))
             time.sleep(1)
 
@@ -78,6 +78,8 @@ class Robot():
     def is_running(self):
         return (self.__power == True)
 
+    def speak(self):
+        print('Hello from Robot')
 
 if __name__ == '__main__':
     r = Robot(name="Robotnik")
