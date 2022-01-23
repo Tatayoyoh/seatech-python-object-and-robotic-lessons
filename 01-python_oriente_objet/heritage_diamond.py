@@ -14,6 +14,9 @@ class FlyingRobot(Robot):
         print('Back to the earth')
         self.__flying = True
 
+    def is_flying(self):
+        return self.__flying
+
     @property
     def flying(self):
         return self.__flying
@@ -29,19 +32,19 @@ class FlyingCyborg(Cyborg, FlyingRobot):
 if __name__ == '__main__':
     print(heritage_description.__doc__)
 
-    fly_cyb = FlyingCyborg('Deux Ex Machina', 'M')
+    fly_cyb = FlyingCyborg('Deux Ex Machina', 'Female')
 
-    # From Cyborg or FluingRobot class ??
+    # let's see if speak() is used from Cyborg or FluingRobot class !?
     pprint(FlyingCyborg.mro())
     print()
     print(fly_cyb.speak())
     print()
 
-    print(fly_cyb.name, 'sexe', fly_cyb.sexe)
-    print('Charging battery...')
+    # Robots and Human attributs
+    print('I\'m',fly_cyb.name, fly_cyb.sexe, 'flying cyborg.')
 
     # Robot methods
-    fly_cyb.charge()
+    # fly_cyb.charge()
     fly_cyb.status()
 
     # Human methods
@@ -52,5 +55,14 @@ if __name__ == '__main__':
     fly_cyb.dance_funk()
 
     # FlyingRobot methods
+    print('\n')
+    
     fly_cyb.fly()
+    if fly_cyb.is_flying():
+        print('Regarder un oiseau !...')
+        print('Non, c\'est un nuage !...')
+        print('Non, c\'est un avion !...')
+        print('Non, c\'est SUPERMAN !!!')
     fly_cyb.land()
+
+    print()

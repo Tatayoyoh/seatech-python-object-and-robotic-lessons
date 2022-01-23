@@ -66,7 +66,8 @@ class Robot():
         self.__current_speed = 0
         print("%s, I'm %s"%(self.__speaches['shutdown'], self.name))
       
-    def charge(self):   
+    def charge(self):
+        print('Charging battery...')
         while self.__battery_level < 100:
             self.__battery_level += 20
             print("Charge is %s%%"%(self.battery_level))

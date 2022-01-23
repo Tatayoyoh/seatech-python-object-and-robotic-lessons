@@ -10,11 +10,11 @@ class FlyingRobot(Robot):
     pass
 
 # try change here
-class Cyborg(Robot, Human):
+class Cyborg(Human, Robot):
     pass
 
 # try change here
-class FlyingCyborg(FlyingRobot, Cyborg):
+class FlyingCyborg(Cyborg,FlyingRobot):
     pass
 
 def heritage_description():

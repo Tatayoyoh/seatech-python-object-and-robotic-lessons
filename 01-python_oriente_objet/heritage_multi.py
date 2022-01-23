@@ -38,7 +38,7 @@ class Cyborg(Robot, Human):
     def dance_funk(self):
         print("Let's dance !!")
         print("https://youtu.be/cZzK32Cfcq8")
-        for x in range(0, 3):
+        for x in range(3):
             sys.stdout.write('╘[◉﹃◉]╕\r')
             sys.stdout.flush()
             time.sleep(1)
@@ -53,7 +53,6 @@ if __name__ == '__main__':
     cyborg = Cyborg('Deux Ex Machina', 'M')
 
     print(cyborg.name, 'sexe', cyborg.sexe)
-    print('Charging battery...')
     cyborg.charge()
     cyborg.status()
     cyborg.eat('banana')
