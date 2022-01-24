@@ -18,6 +18,9 @@ if issubclass(Cyborg, Human):
 if issubclass(Cyborg, Robot):
     print("Cyborg est une sous classe de Robot !")
 
+if isinstance(cyb, Cyborg):
+    print("Cyborg, mis figue, mis raisin !")
+
 if isinstance(cyb, Human):
     print("Wesh frère t'es un mec un vrai !")
 

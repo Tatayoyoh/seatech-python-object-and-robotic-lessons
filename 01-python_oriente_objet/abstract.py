@@ -1,9 +1,9 @@
-from abc import ABC
+from abc import ABC, ABCMeta
 from abc import abstractmethod, abstractproperty
 from abc import abstractclassmethod, abstractstaticmethod
 import time
 
-class TimeRobot(ABC):
+class TimeRobot(metaclass=ABCMeta):
 
     @abstractproperty
     def timezone(self):
@@ -45,3 +45,4 @@ if __name__ == '__main__':
     Robot.whattime()
     rob.change_timezone('America/Montreal')
     rob.mission()
+
