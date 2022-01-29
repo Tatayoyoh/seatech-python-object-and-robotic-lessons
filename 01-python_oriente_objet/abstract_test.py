@@ -1,4 +1,4 @@
-from abc import ABC, abstractmethod
+from abc import ABCMeta, abstractmethod
 
 """
 Now, without ABC
@@ -21,7 +21,7 @@ print("First definition without ABC passes\n")
 Now, with ABC
 """
 
-class Robot(ABC):
+class Robot(metaclass=ABCMeta):
 
     @abstractmethod
     def start_mission(self):
