@@ -130,41 +130,42 @@ class UnmannedUnderwaterVehicle(UnmannedVehicle):
 
 if __name__ == '__main__':
 
+
     # Play with Robot parent class
-    # print('\n\n[Robot]\n')
-    # r = Robot()
+    print('\n\n[Robot]\n')
+    r = Robot()
  
-    # r.start_mission()
+    r.start_mission()
  
-    # if r.is_running:
-    #     print('Robot is running')
+    if r.is_running:
+        print('Robot is running')
  
-    # r.stop_mission()
+    r.stop_mission()
 
     # Play with UnmannedVehicle parent class
-    # print('\n\n[UnmannedVehicle]\n')
-    # uv = UnmannedVehicle()
-    # uv.plan_mission('Collect data from your environment')
+    print('\n\n[UnmannedVehicle]\n')
+    uv = UnmannedVehicle()
+    uv.plan_mission('Collect data from your environment')
 
-    # uv.start_mission()
+    uv.start_mission()
 
-    # if uv.is_running:
-    #     print('UnmannedVehicle is running\n')
+    if uv.is_running:
+        print('UnmannedVehicle is running\n')
 
-    # uv.stop_mission()
+    uv.stop_mission()
 
     # Play with UnmannedUnderwaterVehicle child class
-    # print('\n[UnmannedUnderwaterVehicle]\n')
-    # uuv = UnmannedUnderwaterVehicle()
+    print('\n[UnmannedUnderwaterVehicle]\n')
+    uuv = UnmannedUnderwaterVehicle()
     
-    # uuv.plan_mission('Collect underwater data from your environment')
+    uuv.plan_mission('Collect underwater data from your environment')
 
-    # uuv.start_mission()
+    uuv.start_mission()
 
-    # if uuv.is_running:
-    #     print('UnmannedVehicle is running\n')
+    if uuv.is_running:
+        print('UnmannedVehicle is running\n')
 
-    # uuv.stop_mission()
+    uuv.stop_mission()
 
 
 
