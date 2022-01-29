@@ -1,173 +1,112 @@
-import sys
-import time
+from abc import ABCMeta, abstractmethod, abstractproperty 
 
-
-class UnmannedRobot():
-    __mission_running = False
-    __mission = None
-
-    @property
+class UnmannedRobot(metaclass=ABCMeta):
+    @abstractproperty
     def mission(self):
-        return self.__mission
+        pass
 
     @property
     def mission_running(self):
         return self.__mission_running
+    
+    @abstractmethod
+    def start_mission(self):
+        pass
 
-    def _write_message(self, msg):
-        sys.stdout.write(msg)
-        sys.stdout.flush()
-        time.sleep(1)
-
-    # private
-    def __safety_checks(self):
-        self._write_message('Code safety checks... ')
-        self._write_message('OK\n')
-        self._write_message('Mecanic safety checks... ')
-        self._write_message('OK\n')
-        self._write_message('Electronic safety checks... ')
-        self._write_message('OK\n')
-
-    # private
-    def __integrity_checks(self):
-        self._write_message('Mission data integrity checks... ')
-        self._write_message('OK\n')
-        self._write_message('Mecanic integrity checks... ')
-        self._write_message('OK\n')
-        self._write_message('Electronic integrity checks... ')
-        self._write_message('OK\n')
-
-    # private
-    def __plan_mission(self, mission):
-        if type(mission) is not str: # some weah checks...
-            print('Mission format is not valid')
-            return False
-        self.__mission = mission
-        print('Recorded mission is validated and saved')
-        return True
-
-    # private
-    def __run_mission(self):
-        self.__mission_running = True
-        print('Mission %s is running'%(self.__mission))
-
-    # public
-    def start_mission(self, mission):
-        self.__safety_checks()
-        if self.__plan_mission(mission):
-            self.__run_mission()
-
-    # public
+    @abstractmethod
     def stop_mission(self):
-        self.__mission_running = False
-        print('Mission %s was stopped'%(self.__mission))
-        self.__integrity_checks()
+        pass
 
-class FieldTypeRobot(UnmannedRobot):
+class FieldTypeUnmannedRobot(UnmannedRobot):
     __field = None
+    mission = None
 
     def __init__(self, field):
         self.__field = field
-        super().__init__()
+        # super().__init__()  # abstract parent, __init__ call is not needed
 
     @property
     def field(self):
         return self.__field
 
-class GroundRobot(FieldTypeRobot):
+class GroundRobot(FieldTypeUnmannedRobot):
 
     def __init__(self):
         super().__init__('ground')
 
-    # public
-    def start_mission(self, mission):
-        self.__safety_checks()
-        if self.__plan_mission(mission):
-            self.__run_mission()
+    def start_mission(self):
+        print("%s: Let's have a ride !"%(self.field.capitalize()))
 
-    # public
     def stop_mission(self):
-        self.__mission_running = False
-        print('Mission %s was stopped'%(self.__mission))
-        self.__integrity_checks()
+        print("%s mission stopped."%(self.field.capitalize()))
 
-class AirRobot(FieldTypeRobot):
+class AirRobot(FieldTypeUnmannedRobot):
+    # mission = None
 
     def __init__(self):
-        super().__init__('air')
+        FieldTypeUnmannedRobot.__init__(self, 'air')
 
-    # public
-    def start_mission(self, mission):
-        self.__safety_checks()
-        if self.__plan_mission(mission):
-            self.__run_mission()
+    def start_mission(self):
+        print("%s: Let's liftoff in the air !"%(self.field.capitalize()))
 
-    # public
     def stop_mission(self):
-        self.__mission_running = False
-        print('Mission %s was stopped'%(self.__mission))
-        self.__integrity_checks()
+        print("%s mission stopped."%(self.field.capitalize()))
 
-class UnderseaRobot(FieldTypeRobot):
+class UnderseaRobot(FieldTypeUnmannedRobot):
 
     def __init__(self):
         super().__init__('undersea')
 
-    # public
-    def start_mission(self, mission):
-        self.__safety_checks()
-        if self.__plan_mission(mission):
-            self.__run_mission()
+    def start_mission(self):
+        print("%s: Let's dive captain !"%(self.field.capitalize()))
 
-    # public
     def stop_mission(self):
-        self.__mission_running = False
-        print('Mission %s was stopped'%(self.__mission))
-        self.__integrity_checks()
+        print("%s mission stopped."%(self.field.capitalize()))
 
-class SurfaceRobot(FieldTypeRobot):
+class SurfaceRobot(FieldTypeUnmannedRobot):
 
     def __init__(self):
         super().__init__('surface')
 
-    # public
-    def start_mission(self, mission):
-        self.__safety_checks()
-        if self.__plan_mission(mission):
-            self.__run_mission()
+    def start_mission(self):
+        print("%s: Let's slide on the sea !"%(self.field.capitalize()))
 
-    # public
     def stop_mission(self):
-        self.__mission_running = False
-        print('Mission %s was stopped'%(self.__mission))
-        self.__integrity_checks()
+        print("%s mission stopped."%(self.field.capitalize()))
 
-class RobotFactory():
+class FieldRobotFactory():
     @staticmethod
-    def create(robot_type):
-        if robot_type == 'ground':
-            return GroundRobot()
-        elif robot_type == 'air':
-            return AirRobot()
-        elif robot_type == 'surface':
-            return SurfaceRobot()
-        elif robot_type == 'undersea':
-            return UnderseaRobot()
-        else:
-            print('bad robot type')
-            return None
+    def create_air_robot():
+        return AirRobot()
+
+    @staticmethod
+    def create_ground_robot():
+        return GroundRobot()
+
+    @staticmethod
+    def create_surface_robot():
+        return SurfaceRobot()
+
+    @staticmethod
+    def create_undersea_robot():
+        return UnderseaRobot()
 
 if __name__ == '__main__':
 
-    robot = UnmannedRobot()
-    robot.start_mission('Go to the moooon')
-    robot.stop_mission()
+    print("We will play with 'start_mission' and 'stop_mission' from child objects of UnmannedRobot class\n")
 
-    robot = RobotFactory.create('air')
-    robot.status()
-    robot = RobotFactory.create('ground')
-    robot.status()
-    robot = RobotFactory.create('surface')
-    robot.status()
-    robot = RobotFactory.create('undersea')
-    robot.status()
+    unmanned_robot = FieldRobotFactory.create_air_robot()
+    unmanned_robot.start_mission()
+    unmanned_robot.stop_mission()
+
+    unmanned_robot = FieldRobotFactory.create_ground_robot()
+    unmanned_robot.start_mission()
+    unmanned_robot.stop_mission()
+    
+    unmanned_robot = FieldRobotFactory.create_surface_robot()
+    unmanned_robot.start_mission()
+    unmanned_robot.stop_mission()
+    
+    unmanned_robot = FieldRobotFactory.create_undersea_robot()
+    unmanned_robot.start_mission()
+    unmanned_robot.stop_mission()
