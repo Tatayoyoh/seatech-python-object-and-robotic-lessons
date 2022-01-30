@@ -1,0 +1,23 @@
+#VRML_SIM R2022a utf8
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.17310259817406415 0.17930496433616555 -0.9684447430131441 1.5676565881047202
+  position -0.01472871642342434 2.413936352875867 0.9238555988054943
+}
+TexturedBackground {
+  texture "mars"
+}
+E-puck {
+  rotation 0 0 -1 0
+  controller "seatech_epuck_controller"
+}
+CircleArena {
+}
+SoccerBall {
+  translation 0 0 0.7
+  rotation 0.8413976424253383 -0.3708405426508303 0.3930996047409873 -2.8508821918022744
+  radius 0.1
+}
+TexturedBackgroundLight {
+}
