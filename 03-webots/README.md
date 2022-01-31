@@ -4,7 +4,7 @@ For Webots `R2022a` on Ubuntu `18.04 LTS`
 
 ## Install Webots
 
-Download `.tar.gz` Webots file https://cyberbotics.com/
+Download `.tar.gz` Webots file https://cyberbotics.com/ for Ubuntu `18.04 LTS`
 
 know your Linux OS with the following command :
 ```bash
@@ -28,7 +28,7 @@ Using `.bashrc` user environment variable
 echo 'WEBOTS_HOME=/home/$(whoami)/Apps/webots' >> ~/.bashrc
 echo 'WEBOTS_CONTROLLER=${WEBOTS_HOME}/lib/controller/' >> ~/.bashrc
 echo 'LD_LIBRARY_PATH=${WEBOTS_CONTROLLER}' >> ~/.bashrc
-echo 'PYTHONPATH=${WEBOTS_CONTROLLER}/python38' >> ~/.bashrc
+echo 'PYTHONPATH=${WEBOTS_CONTROLLER}/python36' >> ~/.bashrc
 ```
 
 **OR** Using `.env` environment variable file with **VS Code**
