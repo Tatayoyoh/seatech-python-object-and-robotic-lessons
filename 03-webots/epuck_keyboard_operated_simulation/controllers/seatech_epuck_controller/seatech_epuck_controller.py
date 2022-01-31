@@ -1,4 +1,3 @@
-import keyword
 from controller import Keyboard
 from SeatechEpuckRobot import SeatechEpuckRobot
 
@@ -14,7 +13,7 @@ if __name__ == '__main__':
     TIME_STEP = 64
 
     # create the Robot instance.
-    robot = SeatechEpuckRobot(speed=10)
+    robot = SeatechEpuckRobot()
 
     # Init keybopard control
     keyboard = Keyboard()

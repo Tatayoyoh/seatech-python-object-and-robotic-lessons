@@ -1,11 +1,16 @@
 from math import copysign
+from controller import Motor
+
+class EpuckMotor(Motor):
+    def __init__(self, name):
+        super().__init__(name)
+        self.setPosition(float('inf')) # set rotation infinite (radian), will move forward by default
+        self.setVelocity(0) # do not give a speed to the infinite rotation by default to hold position
 
 class EpuckMotors():
-    def __init__(self, robot_ref):
-        self.left_motor = robot_ref.getDevice('left wheel motor')
-        self.left_motor.setPosition(float('inf'))
-        self.right_motor = robot_ref.getDevice('right wheel motor')
-        self.right_motor.setPosition(float('inf'))
+    def __init__(self):
+        self.left_motor = EpuckMotor('left wheel motor')
+        self.right_motor = EpuckMotor('right wheel motor')
 
     def run(self, speed=None, left=False, right=False):
         """Run forward or backward but never over Epuck max speed"""

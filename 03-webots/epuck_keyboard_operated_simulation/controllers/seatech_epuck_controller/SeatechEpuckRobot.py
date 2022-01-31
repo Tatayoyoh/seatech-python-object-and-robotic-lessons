@@ -1,14 +1,14 @@
-from controller import Robot
+from controller import Robot, Motor
 from EpuckMotors import EpuckMotors
 
 class SeatechEpuckRobot(Robot):
 
     def __init__(self, speed=None):
         super().__init__()
-        self.__motors = EpuckMotors(self)
+        self.__motors = EpuckMotors()
         self.__speed = speed
         if speed is None:
-            speed = self.__motors.get_max_speed()
+            self.__speed = self.__motors.get_max_speed()
 
     def run(self, backward=False, left=False, right=False):
         speed = (-self.__speed) if backward == True else self.__speed
