@@ -19,6 +19,7 @@ file webots
 mkdir ~/Apps
 mv webtos ~/Apps/webots
 echo 'PATH=$PATH:~/Apps/webots' >> ~/.bashrc
+echo 'alias webots="webots & disown"' >> ~/.bashrc
 ```
 
 ## Setup Python environment
