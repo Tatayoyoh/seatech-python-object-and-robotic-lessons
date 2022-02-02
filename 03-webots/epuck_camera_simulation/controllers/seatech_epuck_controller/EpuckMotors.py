@@ -32,13 +32,13 @@ class EpuckMotors():
         self.left_motor.setVelocity(left_speed)
         self.right_motor.setVelocity(right_speed)
 
-    def turn_left(self):
-        self.left_motor.setVelocity(-self.get_max_speed())
-        self.right_motor.setVelocity(self.get_max_speed())
+    def turn_left(self, capacity=1):
+        self.left_motor.setVelocity(0)
+        self.right_motor.setVelocity(self.get_max_speed()*capacity)
 
-    def turn_right(self):
-        self.left_motor.setVelocity(self.get_max_speed())
-        self.right_motor.setVelocity(-self.get_max_speed())
+    def turn_right(self, capacity=1):
+        self.left_motor.setVelocity(self.get_max_speed()*capacity)
+        self.right_motor.setVelocity(0)
 
 
     def get_max_speed(self):
