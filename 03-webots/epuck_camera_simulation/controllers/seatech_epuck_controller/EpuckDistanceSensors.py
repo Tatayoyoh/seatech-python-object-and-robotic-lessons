@@ -14,6 +14,7 @@ class EpuckDistanceSensors():
         self.__front_right = EpuckDistanceSensor('ps0')
         self.__front_right2 = EpuckDistanceSensor('ps1')
     
+    # Useful to debug Robot adventures
     def __str__(self):
         return "Left sensors: %s, %s\nRight sensors: %s, %s"%(
                 self.__front_left.getValue(),
