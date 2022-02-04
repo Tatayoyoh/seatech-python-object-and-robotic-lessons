@@ -1,0 +1,70 @@
+#VRML_SIM R2022a utf8
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.5241650255895417 -0.021373484270557373 -0.8513484598675511 3.210994379219765
+  position 1.6107722532702813 -0.37359483455833653 3.873207698362123
+}
+TexturedBackground {
+  texture "stadium_dry"
+}
+CircleArena {
+  radius 2
+  floorAppearance SandyGround {
+  }
+  floorTileSize 10 10
+  wallHeight 0.18
+  wallAppearance ThreadMetalPlate {
+  }
+}
+Seatech-E-puck {
+  hidden position_0_0 11.249924676736702
+  hidden position_0_1 6.028799989324254
+  hidden rotation_1 0 -1 0 1.3164459376224709
+  hidden rotation_2 0 1 0 6.028799989324253
+  translation 0.0239372 -0.0492565 -0.000110029
+  rotation 0.00031711814584901263 -0.000989745455203839 0.9999994599198618 -2.5874453071795864
+  camera_width 100
+  camera_height 60
+}
+WoodenBox {
+  translation 0.0302707 -0.654348 0.100539
+  rotation 0 0 -1 2.40855
+  name "wooden box(1)"
+  size 0.6 0.1 0.2
+}
+WoodenBox {
+  translation -0.36337 -0.681877 0.100539
+  rotation 0 0 -1 0.354868
+  name "wooden box(3)"
+  size 0.6 0.1 0.2
+}
+WoodenBox {
+  translation -0.236439 -0.240406 0.100539
+  rotation 0 0 -1 1.22755
+  name "wooden box(2)"
+  size 0.6 0.1 0.2
+}
+WoodenBox {
+  translation -0.247581 0.193237 0.088131
+  rotation 0 0 1 0.901754
+  size 0.3 0.1 0.2
+}
+AdvertisingBoard {
+  translation -5.76796 -0.504629 0.77352
+  rotation 0 0 1 0.0872665
+  frontTexture [
+    "https://www.museumtv.art/wp-content/uploads/2017/08/ceci-nest-pas-une-pipe1-e1502441198132.jpg"
+  ]
+}
+RubberDuck {
+  translation -0.8247422885549461 -0.18176400784010688 0.020438018204865783
+  rotation -3.789721302052688e-12 -2.456635105112593e-12 -1 1.2935312897798828e-05
+}
+SoccerBall {
+  translation -1.2071788420703007 -0.26507006754112244 0.09905823999949835
+  rotation 0.8009301825889756 -0.5949840793244953 -0.06711771724643721 1.3641021611618895
+  radius 0.1
+}
+TexturedBackgroundLight {
+}
