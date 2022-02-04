@@ -18,7 +18,7 @@ tar -xvf webots-R2022a-x86-64.tar.bz2
 file webots
 mkdir ~/Apps
 mv webtos ~/Apps/webots
-echo 'PATH=$PATH:~/Apps/webots' >> ~/.bashrc
+echo "PATH=$PATH:~/Apps/webots" >> ~/.bashrc
 echo 'alias webots="webots & disown"' >> ~/.bashrc
 ```
 
