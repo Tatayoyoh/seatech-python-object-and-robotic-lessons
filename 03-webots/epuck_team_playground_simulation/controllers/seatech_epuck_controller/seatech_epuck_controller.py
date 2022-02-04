@@ -6,12 +6,5 @@ if __name__ == '__main__':
     # create the Robot instance.
     robot = SeatechEpuckRobot(TIME_STEP)
     robot.track_object('rubber duck')
-
-    while robot.step(TIME_STEP) != -1:
-        running = robot.run()
-        if robot.goal_reached:
-            print('VICTORY !!')
-            break
-
-    robot.stop()
+    robot.start_mission()
 

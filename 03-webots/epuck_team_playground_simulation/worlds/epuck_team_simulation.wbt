@@ -1,0 +1,64 @@
+#VRML_SIM R2022a utf8
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.1512818410458971 -0.011482127407379285 -0.9884239805467917 3.291352734700987
+  position 3.0519236090341533 -0.698702235903598 1.1793736107611068
+}
+TexturedBackground {
+  texture "stadium_dry"
+}
+CircleArena {
+  radius 2
+  floorAppearance SandyGround {
+  }
+  floorTileSize 10 10
+  wallHeight 0.18
+  wallAppearance ThreadMetalPlate {
+  }
+}
+DEF Seatech-E-puck Robot {
+  controller "seatech_epuck_controller"
+}
+WoodenBox {
+  translation 0.787308 -0.529435 0.100539
+  rotation 0 0 -1 2.40855
+  name "wooden box(1)"
+  size 0.6 0.1 0.2
+}
+WoodenBox {
+  translation -0.899155 -0.949857 0.100539
+  rotation 0 0 -1 0.354868
+  name "wooden box(3)"
+  size 0.6 0.1 0.2
+}
+WoodenBox {
+  translation -0.264027 1.30064 0.100539
+  rotation 0 0 -1 1.22755
+  name "wooden box(2)"
+  size 0.6 0.1 0.2
+}
+WoodenBox {
+  translation 0.0225813 0.420478 0.088131
+  rotation 0 0 1 1.5068
+  size 0.3 0.1 0.2
+}
+AdvertisingBoard {
+  translation -5.76796 -0.504629 0.77352
+  rotation 0 0 1 0.0872665
+  frontTexture [
+    "https://www.museumtv.art/wp-content/uploads/2017/08/ceci-nest-pas-une-pipe1-e1502441198132.jpg"
+  ]
+}
+SoccerBall {
+  translation -1.2071788420703007 -0.26507006754112244 0.09905824000013247
+  rotation 0.8009301825889756 -0.5949840793244954 -0.06711771724643723 1.3641021611618898
+  radius 0.1
+}
+TexturedBackgroundLight {
+}
+Robot {
+  name "supervisor"
+  controller "seatech_team_supervisor"
+  supervisor TRUE
+}
