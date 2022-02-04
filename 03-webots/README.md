@@ -4,39 +4,45 @@ For Webots `R2022a` on Ubuntu `18.04 LTS`
 
 ## Install Webots
 
-Download `.tar.gz` Webots file https://cyberbotics.com/ for Ubuntu `18.04 LTS`
-
 know your Linux OS with the following command :
 ```bash
 cat /etc/issue
 ```
 
+### With .deb archive
+
+Simply open .deb file.Your OS will popup a windows to install the package.
+
+### With .tar.gz archive
+
+Download `.tar.gz` Webots file https://cyberbotics.com/ for Ubuntu `18.04 LTS`
+
 Add Webots `R2022a` to you system `PATH`
 ```bash
-cd ~/Téléchargements
-tar -xvf webots-R2022a-x86-64.tar.bz2
-file webots
 mkdir ~/Apps
-mv webtos ~/Apps/webots
+tar -xvf ~/Téléchargements/webots-R2022a-x86-64.tar.bz2 -C ~/Apps
+```
+Setup environment using `.bashrc` user environment variable
+
+```bash
 echo "PATH=$PATH:~/Apps/webots" >> ~/.bashrc
 echo 'alias webots="webots & disown"' >> ~/.bashrc
-```
-
-## Setup Python environment
-
-Using `.bashrc` user environment variable
-```bash
 echo "WEBOTS_HOME=/home/$(whoami)/Apps/webots" >> ~/.bashrc
-echo "WEBOTS_CONTROLLER=/home/$(whoami)/lib/controller/" >> ~/.bashrc
-echo "LD_LIBRARY_PATH=/home/$(whoami)/lib/controller" >> ~/.bashrc
-echo "PYTHONPATH=/home/$(whoami)/lib/controller/python36" >> ~/.bashrc
+# Reload .bashrc
+source ~/.bashrc
+echo "WEBOTS_CONTROLLER=${WEBOTS_HOME}/lib/controller/" >> ~/.bashrc
+echo "LD_LIBRARY_PATH=${WEBOTS_HOME}/lib/controller" >> ~/.bashrc
+echo "PYTHONPATH=${WEBOTS_HOME}/lib/controller/python36" >> ~/.bashrc
+# Reload .bashrc
+source ~/.bashrc
 ```
 
-**OR** Using `.env` environment variable file with **VS Code**
+Verify variables
 ```bash
-# use .env file for VS Code
-sed "s/<XXX>/$(whoami)/" .env
-cp .env /path/of/my_project/.env
+file $WEBOTS_HOME
+file $WEBOTS_CONTROLLER
+file $LD_LIBRARY_PATH
+file $PYTHONPATH
 ```
 
 ## Play with Webots
@@ -79,4 +85,13 @@ To allow `VS Code` to start the controller instead of Webots, set the controller
 # then execute your controller
 cd my_project
 python3 my_webots_controller.py
+```
+
+## Configure VS Code
+
+Using `.env` environment variable file with **VS Code**
+```bash
+# use .env file for VS Code
+sed "s/XXXXXX/$(whoami)/" .env
+cp .env /path/of/my_project/.env
 ```
