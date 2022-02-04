@@ -22,18 +22,15 @@ Add Webots `R2022a` to you system `PATH`
 mkdir ~/Apps
 tar -xvf ~/Téléchargements/webots-R2022a-x86-64.tar.bz2 -C ~/Apps
 ```
-Setup environment using `.bashrc` user environment variable
 
+Setup environment using `.bashrc` user environment variable
 ```bash
-echo "PATH=$PATH:~/Apps/webots" >> ~/.bashrc
+echo 'export PATH=$PATH:~/Apps/webots' >> ~/.bashrc
 echo 'alias webots="webots & disown"' >> ~/.bashrc
-echo "WEBOTS_HOME=/home/$(whoami)/Apps/webots" >> ~/.bashrc
-# Reload .bashrc
-source ~/.bashrc
-echo "WEBOTS_CONTROLLER=${WEBOTS_HOME}/lib/controller/" >> ~/.bashrc
-echo "LD_LIBRARY_PATH=${WEBOTS_HOME}/lib/controller" >> ~/.bashrc
-echo "PYTHONPATH=${WEBOTS_HOME}/lib/controller/python36" >> ~/.bashrc
-# Reload .bashrc
+echo 'export WEBOTS_HOME=/home/$(whoami)/Apps/webots' >> ~/.bashrc
+echo 'export WEBOTS_CONTROLLER=${WEBOTS_HOME}/lib/controller/' >> ~/.bashrc
+echo 'export LD_LIBRARY_PATH=${WEBOTS_HOME}/lib/controller' >> ~/.bashrc
+echo 'export PYTHONPATH=${WEBOTS_HOME}/lib/controller/python36' >> ~/.bashrc
 source ~/.bashrc
 ```
 
