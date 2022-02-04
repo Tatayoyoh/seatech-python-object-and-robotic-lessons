@@ -26,10 +26,10 @@ echo 'alias webots="webots & disown"' >> ~/.bashrc
 
 Using `.bashrc` user environment variable
 ```bash
-echo 'WEBOTS_HOME=/home/$(whoami)/Apps/webots' >> ~/.bashrc
-echo 'WEBOTS_CONTROLLER=${WEBOTS_HOME}/lib/controller/' >> ~/.bashrc
-echo 'LD_LIBRARY_PATH=${WEBOTS_CONTROLLER}' >> ~/.bashrc
-echo 'PYTHONPATH=${WEBOTS_CONTROLLER}/python36' >> ~/.bashrc
+echo "WEBOTS_HOME=/home/$(whoami)/Apps/webots" >> ~/.bashrc
+echo "WEBOTS_CONTROLLER=${WEBOTS_HOME}/lib/controller/" >> ~/.bashrc
+echo "LD_LIBRARY_PATH=${WEBOTS_CONTROLLER}" >> ~/.bashrc
+echo "PYTHONPATH=${WEBOTS_CONTROLLER}/python36" >> ~/.bashrc
 ```
 
 **OR** Using `.env` environment variable file with **VS Code**
