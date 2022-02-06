@@ -1,0 +1,40 @@
+#VRML_OBJ R2022a utf8
+
+PROTO Normal-Token [
+  field SFVec3f            translation          0 0 0
+  field SFRotation         rotation             0 0 1 0
+  field SFString           name                 "Normal-Token"
+  field SFInt32            mass                 0.6
+#  field SFVec3f            color                0 0.7 0
+]
+{
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    name IS name
+    children [
+      Shape {
+        appearance Appearance {
+          material Material {
+            diffuseColor 0 0.7 0
+          }
+          texture ImageTexture {
+          }
+        }
+        geometry Cylinder {
+          height 0.01
+          radius 0.025
+        }
+      }
+    ]
+    physics Physics {
+      mass IS mass
+    }
+    boundingObject Box {
+      size 0.025 0.025 0.025
+    }
+    recognitionColors [
+      0 1 0
+    ]
+  }
+}
