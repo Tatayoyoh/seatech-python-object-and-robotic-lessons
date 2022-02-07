@@ -4,7 +4,7 @@ PROTO Normal-Token [
   field SFVec3f            translation          0 0 0
   field SFRotation         rotation             0 0 1 0
   field SFString           name                 "Normal-Token"
-  field SFInt32            mass                 0.6
+  field SFInt32            mass                 2
 #  field SFVec3f            color                0 0.7 0
 ]
 {
@@ -28,7 +28,7 @@ PROTO Normal-Token [
       }
     ]
     physics Physics {
-      mass IS mass
+      mass 1.1
     }
     boundingObject Box {
       size 0.025 0.025 0.025

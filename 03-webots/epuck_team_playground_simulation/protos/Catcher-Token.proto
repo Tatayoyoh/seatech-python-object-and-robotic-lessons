@@ -28,7 +28,7 @@ PROTO Catcher-Token [
       }
     ]
     physics Physics {
-      mass IS mass
+      mass 0.1
     }
     boundingObject Box {
       size 0.025 0.025 0.025
