@@ -4,8 +4,6 @@ PROTO Catcher-Token [
   field SFVec3f            translation          0 0 0
   field SFRotation         rotation             0 0 1 0
   field SFString           name                 "Catcher-Token"
-  field SFInt32            mass                 0.6
-#  field SFVec3f            color                0.7 0 0
 ]
 {
   Solid {
@@ -28,10 +26,8 @@ PROTO Catcher-Token [
       }
     ]
     physics Physics {
+      density -1
       mass 0.1
-    }
-    boundingObject Box {
-      size 0.025 0.025 0.025
     }
     recognitionColors [
       1 0 0

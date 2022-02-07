@@ -2,14 +2,14 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation 0.1512818410458971 -0.011482127407379285 -0.9884239805467917 3.291352734700987
-  position 3.0519236090341533 -0.698702235903598 1.1793736107611068
+  orientation -0.41401934983327704 -0.006558192795220455 0.9102444551168061 3.170427755146312
+  position 2.7722884678815487 0.1835200095681936 3.115199642907545
 }
 TexturedBackground {
   texture "stadium_dry"
 }
 CircleArena {
-  radius 2
+  radius 1.2
   floorAppearance SandyGround {
   }
   floorTileSize 10 10
@@ -17,31 +17,20 @@ CircleArena {
   wallAppearance ThreadMetalPlate {
   }
 }
-DEF Seatech-E-puck Robot {
-  controller "seatech_epuck_controller"
+Ball {
+  translation 0.0206486 -1.02381 0.08
+  name "ball1"
+  radius 0.08
 }
-WoodenBox {
-  translation 0.787308 -0.529435 0.100539
-  rotation 0 0 -1 2.40855
-  name "wooden box(1)"
-  size 0.6 0.1 0.2
+Ball {
+  translation 0.6736 0.702089 0.08
+  name "ball2"
+  radius 0.08
 }
-WoodenBox {
-  translation -0.899155 -0.949857 0.100539
-  rotation 0 0 -1 0.354868
-  name "wooden box(3)"
-  size 0.6 0.1 0.2
-}
-WoodenBox {
-  translation -0.264027 1.30064 0.100539
-  rotation 0 0 -1 1.22755
-  name "wooden box(2)"
-  size 0.6 0.1 0.2
-}
-WoodenBox {
-  translation 0.0225813 0.420478 0.088131
-  rotation 0 0 1 1.5068
-  size 0.3 0.1 0.2
+Ball {
+  translation -0.46193 0.962734 0.08
+  name "ball3"
+  radius 0.08
 }
 AdvertisingBoard {
   translation -5.76796 -0.504629 0.77352
@@ -51,8 +40,7 @@ AdvertisingBoard {
   ]
 }
 SoccerBall {
-  translation -1.2071788420703007 -0.26507006754112244 0.09905824000013247
-  rotation 0.8009301825889756 -0.5949840793244954 -0.06711771724643723 1.3641021611618898
+  translation -0.429081 -0.766714 0.0990582
   radius 0.1
 }
 TexturedBackgroundLight {

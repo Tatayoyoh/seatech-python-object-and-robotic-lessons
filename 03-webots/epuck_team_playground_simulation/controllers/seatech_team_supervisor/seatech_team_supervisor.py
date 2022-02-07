@@ -1,28 +1,40 @@
-from controller import Supervisor
+from controller import Keyboard
+from SeatechSupervisor import SeatechSupervisor
+
+def help_text():
+    print('Which mode do you want to play ?')
+    print('[A] Single random controller')
+    print('[B] All controllers')
+    print('Enter your choice :')
 
 if __name__ == '__main__':
     TIME_STEP = 64
-    supervisor = Supervisor()
+    supervisor = SeatechSupervisor()
 
-    root_node = supervisor.getRoot()
-    children_field = root_node.getField('children')
-    # children_field.importMFNodeFromString(-1, 'Seatech-E-puck { translation 2.5 0 0.334, controller "seatech_epuck_controller" }')
-    children_field.importMFNodeFromString(-1, 'Seatech-E-puck { translation 1 0 0 }')
-    children_field.importMFNodeFromString(-1, 'Catcher-Token { translation 1 0 0.1 }')
+    keyboard = Keyboard()
+    keyboard.enable(samplingPeriod=200)
 
-    children_field.importMFNodeFromString(-1, 'Seatech-E-puck { translation 0.5 0 0 }')
-    children_field.importMFNodeFromString(-1, 'Normal-Token { translation 0.5 0 0.1 }')
+    print('Student folder:', supervisor.students_folder)
+    help_text()
 
-    children_field.importMFNodeFromString(-1, 'Seatech-E-puck { translation 1 1 0 }')
-    children_field.importMFNodeFromString(-1, 'Normal-Token { translation 1 1 0.1 }')
-
-    children_field.importMFNodeFromString(-1, 'Seatech-E-puck { translation 1 0.5 0 }')
-    children_field.importMFNodeFromString(-1, 'Normal-Token { translation 1 0.5 0.1 }')
-
-    children_field.importMFNodeFromString(-1, 'Seatech-E-puck { translation 0.5 0.5 0 }')
-    children_field.importMFNodeFromString(-1, 'Normal-Token { translation 0.5 0.5 0.1 }')
-
-
+    choice = None
 
     while supervisor.step(TIME_STEP) != -1:
-        pass
+        key = keyboard.getKey()
+        
+        if key != -1:
+            key = chr(key).upper()
+
+        if not supervisor.running:
+            if key == 'A' :
+                supervisor.set_single_random_controller_mode()
+                print('Mode "Single random controller" activation')
+            elif key == 'B':
+                supervisor.set_all_controllers_mode()
+                print('Mode "All controller" activation')
+
+        if key == 'R':
+            supervisor.clear()
+            print('Removed all nodes')
+
+        supervisor.update_token_positions()

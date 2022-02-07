@@ -1,6 +1,6 @@
 #VRML_OBJ R2022a utf8
 
-PROTO Normal-Token [
+PROTO Normal-Token2 [
   field SFVec3f            translation          0 0 0
   field SFRotation         rotation             0 0 1 0
   field SFString           name                 "Normal-Token"
@@ -25,10 +25,6 @@ PROTO Normal-Token [
         }
       }
     ]
-    physics Physics {
-      density -1
-      mass 1.1
-    }
     recognitionColors [
       0 1 0
     ]

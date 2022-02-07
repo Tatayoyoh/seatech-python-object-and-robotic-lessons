@@ -1,9 +1,9 @@
 #VRML_OBJ R2022a utf8
 
-PROTO Normal-Token [
+PROTO Catcher-Token2 [
   field SFVec3f            translation          0 0 0
   field SFRotation         rotation             0 0 1 0
-  field SFString           name                 "Normal-Token"
+  field SFString           name                 "Catcher-Token"
 ]
 {
   Solid {
@@ -14,7 +14,7 @@ PROTO Normal-Token [
       Shape {
         appearance Appearance {
           material Material {
-            diffuseColor 0 0.7 0
+            diffuseColor 0.7 0 0
           }
           texture ImageTexture {
           }
@@ -25,12 +25,8 @@ PROTO Normal-Token [
         }
       }
     ]
-    physics Physics {
-      density -1
-      mass 1.1
-    }
     recognitionColors [
-      0 1 0
+      1 0 0
     ]
   }
 }
