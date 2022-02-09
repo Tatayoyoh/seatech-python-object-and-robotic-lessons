@@ -35,6 +35,7 @@ if __name__ == '__main__':
 
         if key == 'R':
             supervisor.clear()
-            print('Removed all nodes')
+            print('Removed all nodes !')
+            help_text()
 
         supervisor.update_token_positions()

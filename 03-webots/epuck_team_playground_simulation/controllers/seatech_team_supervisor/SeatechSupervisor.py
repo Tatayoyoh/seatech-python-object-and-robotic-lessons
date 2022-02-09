@@ -6,7 +6,7 @@ from controller import Supervisor, Node, Robot
 class SeatechSupervisor(Supervisor):
     def __init__(self):
         super().__init__()
-        self.__students_folder = abspath(join(dirname(abspath(__name__)), '..', 'students_controllers'))
+        self.__students_folder = abspath(join(dirname(abspath(__name__)), '..'))
         self.__running = False
         self.__robots = {}
         self.__tokens = {}
@@ -34,7 +34,7 @@ class SeatechSupervisor(Supervisor):
             for file in files:
                 if file.endswith('_controller.py'):
                     self.__students_controllers.append(splitext(file)[0])
-        print('Found controllers : ', '\n'.join(self.__students_controllers))
+        print('Found controllers :\n\t', '\n\t'.join(self.__students_controllers))
 
     def __set_catcher(self):
         catcher_robot = 'SEATECH-%s'%(random.randrange(1, self.__number_of_robots))
@@ -55,7 +55,7 @@ class SeatechSupervisor(Supervisor):
         robot_name = 'SEATECH-'+str(len(self.__robots)+1)
 
         if controller:
-            controller = ', controller "%s"'
+            controller = ', controller "%s"'%(controller)
         
         # With 'DEF' we can set Node definition
         self.__root_children.importMFNodeFromString(-1, 'DEF %s Seatech-E-puck { translation %s %s 0, rotation 0 0 1 %s, name "E-PUCK-%s" %s }'%(robot_name, x, y, rotation, robot_name, controller))
@@ -92,7 +92,7 @@ class SeatechSupervisor(Supervisor):
 
     def set_single_random_controller_mode(self):
         controller = self.__students_controllers[random.randrange(0,len(self.__students_controllers)-1)]
-        print('Using controller ', controller)
+        print('\n>>>>> USING CONTROLLER %s\n'%(controller))
         self.__running = True
         for i in range(1, self.__number_of_robots):
             self.__pop_robot(controller=controller)
@@ -100,4 +100,6 @@ class SeatechSupervisor(Supervisor):
 
     def set_all_controllers_mode(self):
         self.__running = True
-        # TODO : select the controller for each studen
+        for controller in self.__students_controllers:
+            self.__pop_robot(controller=controller)
+        self.__set_catcher()
