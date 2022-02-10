@@ -1,3 +1,5 @@
 venv
 *.pyc
 *.wbproj
+**/epuck_team_playground_simulation/controllers/*_controller
+!**/epuck_team_playground_simulation/controllers/professor_epuck_controller

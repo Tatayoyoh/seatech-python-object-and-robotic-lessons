@@ -5,6 +5,8 @@ def help_text():
     print('Which mode do you want to play ?')
     print('[A] Single random controller')
     print('[B] All controllers')
+    print('[R] Reset')
+    print('[Q] Quit')
     print('Enter your choice :')
 
 if __name__ == '__main__':
@@ -19,7 +21,7 @@ if __name__ == '__main__':
 
     choice = None
 
-    while supervisor.step(TIME_STEP) != -1:
+    while supervisor.step(TIME_STEP) != -1:        
         key = keyboard.getKey()
         
         if key != -1:
@@ -37,5 +39,12 @@ if __name__ == '__main__':
             supervisor.clear()
             print('Removed all nodes !')
             help_text()
+        
+        if key == 'Q':
+            print('Bye !')
+            break
 
-        supervisor.update_token_positions()
+        if supervisor.running:
+            supervisor.check_catcher_collisions()
+            supervisor.update_token_positions()
+
