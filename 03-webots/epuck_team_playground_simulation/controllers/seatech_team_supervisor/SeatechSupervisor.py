@@ -4,7 +4,7 @@ import random, math
 from math import sqrt, pow
 from controller import Supervisor, Node, Robot
 
-# https://cyberbotics.com/doc/guide/epuck#e-puck-model
+# E-PUCK is 72mm of diameter https://cyberbotics.com/doc/guide/epuck#e-puck-model
 EPUCK_ROBOT_DIAMTER = 0.08
 
 class SeatechSupervisor(Supervisor):
@@ -43,17 +43,26 @@ class SeatechSupervisor(Supervisor):
         print('Found controllers :\n\t', '\n\t'.join(self.__students_controllers))
 
     def __set_random_catcher(self):
-        random_number = random.randrange(1, len(self.__robots))
-        self.__set_catcher('SEATECH-%s'%(random_number))
+        random_number = random.randrange(0, len(self.__robots)-1)
+        robot_names = list(self.__robots.keys())
+        self.__set_catcher(robot_names[random_number])
 
     def __free_old_catcher(self):
-        if self.__catcher:
+        if self.__catcher != None:
+            # Other 'OldCatcher' are back to normal
+            for token_name, token in self.__tokens.items():
+                if 'OldCatcher' in token.getTypeName():
+                    token_pos = token.getPosition()
+                    token.remove()
+                    self.__pop_token(token_name, x=token_pos[0], y=token_pos[1])
+
             self.__old_catcher = self.__catcher
             token_name = self.__old_catcher.getDef()+"-TOKEN"
             token = self.__tokens[token_name]
             token.remove()
             robot_pos = self.__old_catcher.getPosition()
             self.__pop_token(token_name, type='OldCatcher', x=robot_pos[0], y=robot_pos[1])
+
 
     def __set_catcher(self, robot_name):
         self.__free_old_catcher()
@@ -68,11 +77,15 @@ class SeatechSupervisor(Supervisor):
         self.__root_children.importMFNodeFromString(-1, 'DEF %s %s-Token2 { translation %s %s %s }'%(token_name, type, x, y, self.__token_z))
         self.__tokens[token_name] = self.getFromDef(token_name)
 
-    def __pop_robot(self, controller=''):
+    def __pop_robot(self, controller='', numeric_suffix=True):
         x = random.uniform(-1, 1)
         y = random.uniform(-0.65, 0.65)
         rotation = random.uniform(-math.pi, math.pi)
-        robot_name = 'SEATECH-'+str(len(self.__robots)+1)
+
+        if numeric_suffix:
+            robot_name = 'SEATECH-'+str(len(self.__robots)+1)
+        else:
+            robot_name = 'SEATECH-'+controller.replace('_controller','')
 
         if controller:
             controller = ', controller "%s"'%(controller)
@@ -145,5 +158,5 @@ class SeatechSupervisor(Supervisor):
     def set_all_controllers_mode(self):
         self.__running = True
         for controller in self.__students_controllers:
-            self.__pop_robot(controller=controller)
+            self.__pop_robot(controller=controller, numeric_suffix=False)
         self.__set_random_catcher()
