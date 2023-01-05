@@ -1,13 +1,11 @@
-class RobotCore():
-    # it's a function, not a method
-    def SecurisedAction(f):
-        def wrapper(*args):
-            obj = args[0]
-            if obj.safety_enabled:
-                print('Robot is not allowed to do any action... ', str(f))
-            else:
-                return f(*args)
-        return wrapper
+def SecurisedAction(f):
+    def wrapper(*args):
+        obj = args[0]
+        if obj.safety_enabled:
+            print('Robot is not allowed to do any action... ', str(f))
+        else:
+            return f(*args)
+    return wrapper
 
 
 class Robot() :
@@ -25,11 +23,11 @@ class Robot() :
     def disable_safety(self):
         self.__safety = False
 
-    @RobotCore.SecurisedAction
+    @SecurisedAction
     def fire(self):
         print('pew pew !')
 
-    @RobotCore.SecurisedAction
+    @SecurisedAction
     def run(self):
         print("let's goooo")
 
@@ -43,5 +41,7 @@ if __name__ == '__main__':
 
     r = Robot(safety=False)
     r.fire()
+    r.run()
     r.enable_safety()
+    r.fire()
     r.run()

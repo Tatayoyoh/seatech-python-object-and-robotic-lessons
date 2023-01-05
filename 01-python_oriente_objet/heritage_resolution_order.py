@@ -14,7 +14,7 @@ class Cyborg(Human, Robot):
     pass
 
 # try change here
-class FlyingCyborg(Cyborg,FlyingRobot):
+class FlyingCyborg(Cyborg, FlyingRobot):
     pass
 
 def heritage_description():
@@ -29,5 +29,7 @@ def heritage_description():
     """
     pass
 
-print(heritage_description.__doc__)
-pprint(FlyingCyborg.mro())
+
+if __name__ == '__main__':
+    # print(heritage_description.__doc__)
+    pprint(FlyingCyborg.mro())
