@@ -1,51 +1,51 @@
+SIZES = {'small':1, 'medium':2, 'big':3}
 
 class Robot():
   """ My robot documentation 
   is 
   awesome 
   """
-  __SIZES = {'small':1, 'medium':2, 'big':3}
 
   def __init__(self, name, payloads=[], size='medium'):
     self.name = name
-    self.size = size
+    self.size = size if type(size) is int else SIZES[size]
+    self.size_str = size
     self.payloads = payloads
-    self.payloads_index = 0
 
   def __iter__(self):
+    self.iter_index = 0
     return self
 
   def __next__(self):
-    if self.payloads_index >= len(self.payloads):
+    if self.iter_index >= len(self.payloads):
       raise StopIteration
-    payloads = self.payloads[self.payloads_index]
-    self.payloads_index += 1
-    return payloads
+    payload = self.payloads[self.iter_index]
+    self.iter_index += 1
+    return payload
 
   def __add__(self, robot):
-    return Robot(self.name, payloads=self.payloads + robot.payloads, size=self.size)
+    return Robot(self.name, payloads=self.payloads + robot.payloads, size=self.size + robot.size)
 
   def __str__(self):
     return '%s (%s): %s' %(self.name, self.size, self.payloads)
 
   def __eq__(self, robot): # equal
-    return (self.__SIZES[self.size] == self.__SIZES[robot.size])
+    return (self.size == robot.size)
 
   def __ne__(self, robot): # not equal
-    global __SIZES
-    return (self.__SIZES[self.size] != self.__SIZES[robot.size])
+    return (self.size != robot.size)
 
   def __gt__(self, robot): # greater than
-    return (self.__SIZES[self.size] > self.__SIZES[robot.size])
+    return (self.size > robot.size)
 
   def __ge__(self, robot): # greater or equal
-    return (self.__SIZES[self.size] >= self.__SIZES[robot.size])
+    return (self.size >= robot.size)
 
   def __lt__(self, robot): # less than
-    return (self.__SIZES[self.size] < self.__SIZES[robot.size])
+    return (self.size < robot.size)
 
   def __le__(self, robot): # less or equal
-    return (self.__SIZES[self.size] <= self.__SIZES[robot.size])
+    return (self.size <= robot.size)
 
 
 
@@ -90,3 +90,7 @@ if __name__ == '__main__':
   print("MEGAZORD takes %sbytes in memory"%(memory_size))
 
   print('\nDocumentation:', megazord.__doc__)
+
+  input('ENTER to display help')
+
+  print('\nDocumentation:', help(megazord))

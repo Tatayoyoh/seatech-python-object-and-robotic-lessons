@@ -63,23 +63,20 @@ class Robot():
         return (self.power == True)
 
 
-def print_status(robot):
-    print("%s status : %s"%(robot.name, robot.status()))
-
 
 if __name__ == '__main__':
     r = Robot(name="Robotnik")
-    print_status(r)
+    r.status()
     r.boot()
-    print_status(r)
+    r.status()
     r.charge()
     r.shutdown()
-    print_status(r)
+    r.status()
 
     print("\nEncore encore !")
-    print_status(r)
+    r.status()
     r.boot()
-    print_status(r)
+    r.status()
     r.charge()
     r.shutdown()
-    print_status(r)
+    r.status()

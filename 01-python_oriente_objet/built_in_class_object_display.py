@@ -13,10 +13,14 @@ class Robot():
 rob = Robot('Terminator', 'medium')
 
 # __str__ call
+print('> __str__ call')
+print(str(Robot))
 print(str(rob)) 
-print(rob) # print auto convert into string
+print(rob,'\n') # print auto convert into string
 
 # __repr__ call
+print('> __repr__ call')
+print(repr(Robot))
 print(repr(rob))
 
 # In python command interpreter repr() is automatically called. 

@@ -1,4 +1,3 @@
-ROBOT_COUNT = 0
 
 class Robot():
     name = "<unnamed>"
@@ -10,13 +9,9 @@ class Robot():
             self.name = name
         self.current_state = self.states[0]
         self.power = False
-        global ROBOT_COUNT
-        ROBOT_COUNT += 1
 
     def __del__(self):
         print("%s Auto destruction NOW"%(self.name))
-        global ROBOT_COUNT
-        ROBOT_COUNT -= 1
 
 
 if __name__ == '__main__':
@@ -32,9 +27,9 @@ if __name__ == '__main__':
     # Oh la belle instance de classe : naissance d'un objet
     print("\nNaissance de l'objet Robot")
     r = Robot(name='Terminator')
-    print("Robot.name: ", r.name)
-    print("Robot.power: ", r.power)
-    print("Robot.current_state: ", r.current_state)
+    print("RobotObj.name: ", r.name)
+    print("RobotObj.power: ", r.power)
+    print("RobotObj.current_state: ", r.current_state)
 
     # Ceci n'a pas bougé
     print("\nAppel de current_state toujours indisponible à partir de la classe")

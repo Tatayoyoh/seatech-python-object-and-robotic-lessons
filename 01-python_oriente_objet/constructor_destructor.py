@@ -10,6 +10,8 @@ class Robot():
         if name:
             self.name = name
         self.battery_level = battery_level
+
+        print("Hello I'm %s with %s%% battery"%(self.name, self.battery_level))
         global ROBOT_COUNT
         ROBOT_COUNT += 1
 
@@ -19,19 +21,20 @@ class Robot():
       global ROBOT_COUNT
       ROBOT_COUNT -= 1
 
+
+
 if __name__ == '__main__':
     print(ROBOT_COUNT, ' robot(s) created')
-    r1 = Robot('Robotnik')
-    r2 = Robot()
+    print('Creating robots...')
 
-    print(ROBOT_COUNT, ' robot(s) created')
+    r1 = Robot('Robotnik', battery_level=20)
+    r2 = Robot(battery_level=100)
 
-    print("Hello %s"%(r1.name))
-    print("Hello %s"%(r2.name))
+    print(ROBOT_COUNT, ' robot(s) created\n')
 
-    print('Destroy %s now'%(r1.name))
+
+    print('Destroy %s now \n'%(r1.name))
     del r1
 
     print(ROBOT_COUNT, ' robot(s) created')
-
-    print('End of program. Exit.')
+    print('\nEnd of program. Exit.\n')

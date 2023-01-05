@@ -23,17 +23,16 @@ if __name__ == '__main__':
     r = Robot()
 
     # Pour comparer votre objet
-    isinstance(r, Robot)
+    print(isinstance(r, Robot))
 
     # Récupérer la valeur d'un attribut
-    getattr(Robot, 'name')
+    print(getattr(Robot, 'name'))
 
     # Pour comparer votre objet
-    callable(Robot().action)
+    print(callable(Robot().action)) # Oui :)
+    print(callable(Robot().action())) # Nop !
 
-    callable(Robot().action())
-
-    dir(Robot)
+    print(dir(Robot))
 
     # Avec plus d'infos
     from pprint import pprint
