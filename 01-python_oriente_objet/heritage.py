@@ -8,7 +8,7 @@ class FieldTypeRobot(Robot):
         super().__init__(name)
 
     def __del__(self):
-        pass # do not print message enymore !
+        pass # do not print message anymore !
 
     @property
     def field(self):
@@ -18,7 +18,10 @@ class FieldTypeRobot(Robot):
         print("%s (%s) status: %s [%s%% battery]"%(self.name, self.field, self.current_status, self.battery_level))
 
     def start_mission(self):
-        print(f"Starting \033[1m\033[93m%s\033[0m mission !"%(self.field))
+        if self.is_running():
+            print(f"Starting \033[1m\033[93m%s\033[0m mission !\n"%(self.field))
+        else:
+            print('Boot robot first !')
 
 class GroundRobot(FieldTypeRobot):
 
@@ -50,15 +53,17 @@ if __name__ == '__main__':
 
     ugv.status()
     ugv.start_mission()
-    print()
+    ugv.boot()
+    ugv.start_mission()
     
     uav.status()
+    uav.boot()
     uav.start_mission()
-    print()
 
     usv.status()
+    usv.boot()
     usv.start_mission()
-    print()
 
     uuv.status()
+    uuv.boot()
     uuv.start_mission()

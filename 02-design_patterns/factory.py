@@ -74,7 +74,7 @@ class SurfaceRobot(FieldTypeUnmannedRobot):
     def stop_mission(self):
         print("%s mission stopped."%(self.field.capitalize()))
 
-class FieldRobotFactory():
+class RobotFactory():
     @staticmethod
     def create_air_robot():
         return AirRobot()
@@ -95,18 +95,18 @@ if __name__ == '__main__':
 
     print("We will play with 'start_mission' and 'stop_mission' from child objects of UnmannedRobot class\n")
 
-    unmanned_robot = FieldRobotFactory.create_air_robot()
+    unmanned_robot = RobotFactory.create_air_robot()
     unmanned_robot.start_mission()
     unmanned_robot.stop_mission()
 
-    unmanned_robot = FieldRobotFactory.create_ground_robot()
+    unmanned_robot = RobotFactory.create_ground_robot()
     unmanned_robot.start_mission()
     unmanned_robot.stop_mission()
     
-    unmanned_robot = FieldRobotFactory.create_surface_robot()
+    unmanned_robot = RobotFactory.create_surface_robot()
     unmanned_robot.start_mission()
     unmanned_robot.stop_mission()
     
-    unmanned_robot = FieldRobotFactory.create_undersea_robot()
+    unmanned_robot = RobotFactory.create_undersea_robot()
     unmanned_robot.start_mission()
     unmanned_robot.stop_mission()

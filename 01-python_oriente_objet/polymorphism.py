@@ -145,7 +145,7 @@ if __name__ == '__main__':
     # Play with UnmannedVehicle parent class
     print('\n\n[UnmannedVehicle]\n')
     uv = UnmannedVehicle()
-    uv.plan_mission('Collect data from your environment')
+    uv.plan_mission('Collect data')
 
     uv.start_mission()
 
@@ -156,10 +156,9 @@ if __name__ == '__main__':
 
     # Play with UnmannedUnderwaterVehicle child class
     print('\n[UnmannedUnderwaterVehicle]\n')
-    uuv = UnmannedUnderwaterVehicle()
-    
-    uuv.plan_mission('Collect underwater data from your environment')
 
+    uuv = UnmannedUnderwaterVehicle()
+    uuv.plan_mission('Collect underwater data')
     uuv.start_mission()
 
     if uuv.is_running:

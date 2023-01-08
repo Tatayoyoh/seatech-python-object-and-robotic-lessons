@@ -47,12 +47,13 @@ class Cyborg(Robot, Human):
             time.sleep(1)
 
     def speak(self):
-        print('Hello from Cyborg')
+        print('Hi from Cyborg %s [%s] !'%(self.name, self.sexe))
 
 if __name__ == '__main__':
     cyborg = Cyborg('Deux Ex Machina', 'M')
 
-    print(cyborg.name, 'sexe', cyborg.sexe)
+    cyborg.boot()
+    cyborg.speak()
     cyborg.charge()
     cyborg.status()
     cyborg.eat('banana')
