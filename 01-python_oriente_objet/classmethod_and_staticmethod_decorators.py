@@ -24,6 +24,7 @@ class Robot:
 
     @classmethod
     def war_robot(cls, name):
+        # 'cls' ici équivaut à 'Robot'
         return cls(name, ['gun', 'rockets', 'shield'])
 
     @classmethod
@@ -36,15 +37,21 @@ class Robot:
 
 
 if __name__ == '__main__':
-    # static method call
-    Robot.calculate(20,22)
 
     # normal object creation
     r = Robot('Roger le robot', ['v8', 'joke generator'])
-    print(r.name, r.payloads)
 
     # call class methods
+    print()
+    print('Current values :')
+    print(r.name, r.payloads)
+    print('Original values :')
     print(r.get_original_name(), r.get_original_payloads())
+    print()
+
+    # static method call
+    Robot.calculate(20,22)
+    print()
 
     # generate new robots from class methods
     r = Robot.war_robot('Terminator')
