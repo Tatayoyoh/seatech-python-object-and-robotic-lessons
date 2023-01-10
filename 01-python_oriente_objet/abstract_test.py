@@ -1,7 +1,7 @@
 from abc import ABCMeta, abstractmethod
 
 """
-Now, without ABC
+Now, without ABCMeta
 """
 class Robot():
 
@@ -14,11 +14,11 @@ class SuperRobot(Robot):
 
 sr = SuperRobot()
 sr.start_mission()
-print("First definition without ABC passes\n")
+print("First definition without ABCMeta passes\n")
 # Mmmmmh, can be executed !
 
 """
-Now, with ABC
+Now, with ABCMeta
 """
 
 class Robot(metaclass=ABCMeta):
@@ -34,5 +34,5 @@ try:
     sr = SuperRobot()
     sr.start_mission()
 except Exception as e:
-    print("Second definition with ABC, ERROR !")
+    print("Second definition with ABCMeta, ERROR !")
     print(e)

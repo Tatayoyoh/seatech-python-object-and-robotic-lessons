@@ -1,8 +1,9 @@
-from abc import ABCMeta, abstractmethod, abstractproperty
+from abc import ABCMeta, abstractmethod
 
 class RobotVehicule(metaclass=ABCMeta):
-    @abstractproperty
-    def _running(self):
+    @property
+    @abstractmethod
+    def running(self):
         pass
 
     @abstractmethod
@@ -37,8 +38,12 @@ class FieldTypeVehicule():
 
 
 class AutonomousUnderseaVehicle(AutonomousVehicule, FieldTypeVehicule):
+    __running = False
+
     # redefinition forced by RobotVehicule
-    _running = False
+    @property
+    def running(self):
+        return self.__running
     
     # redefinition forced by FieldTypeVehicule
     def __init__(self):
@@ -47,14 +52,14 @@ class AutonomousUnderseaVehicle(AutonomousVehicule, FieldTypeVehicule):
     # redefinition forced by AutonomousVehicule
     def start(self):
         print('start autonomous mission')
-        self._running = True
+        self.__running = True
 
     # redefinition forced by RobotVehicule
     def status(self):
         print(self)
 
     def __str__(self):
-        return 'AutonomousUnderseaVehicle [running:%s]'%(self._running)
+        return 'AutonomousUnderseaVehicle [running:%s]'%(self.__running)
 
 auv = AutonomousUnderseaVehicle()
 auv.start()

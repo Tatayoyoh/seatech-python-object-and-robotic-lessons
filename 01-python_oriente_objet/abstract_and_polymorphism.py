@@ -2,7 +2,7 @@ from abc import ABCMeta, abstractmethod
 
 """ You can use classes below or create your own 👍️"""
 
-class UnmannedVehicle():
+class UnmannedVehicle(metaclass=ABCMeta):
     """ 
         An autonomous vehicle have to do his mission automatically.
         This mission can be configured by an operator.
@@ -15,7 +15,7 @@ class UnmannedVehicle():
     def stop_mission(self):
         pass
 
-class AerialVehicle():
+class AerialVehicle(metaclass=ABCMeta):
     """ A vehicle made for ground fields."""
     @abstractmethod
     def fly(self):
@@ -25,10 +25,11 @@ class AerialVehicle():
     def land(self):
         pass
 
+    @abstractmethod
     def status(self):
-        print('Air Vehicle')
+        pass
 
-class GroundVehicle():
+class GroundVehicle(metaclass=ABCMeta):
     """ A vehicle made for ground fields."""
     @abstractmethod
     def move(self, forward=True):
@@ -38,10 +39,11 @@ class GroundVehicle():
     def stop(self):
         pass
 
+    @abstractmethod
     def status(self):
-        print('Ground Vehicle')
+        pass
 
-class UnderseaVehicle():
+class UnderseaVehicle(metaclass=ABCMeta):
     """ A vehicle made for ground fields."""
     @abstractmethod
     def dive(self):
@@ -51,8 +53,9 @@ class UnderseaVehicle():
     def surface(self):
         pass
 
+    @abstractmethod
     def status(self):
-        print('Undersea Vehicle')
+        pass
 
 class UAV(UnmannedVehicle, AerialVehicle):
     """Unmanned Aerial Vehicle"""
@@ -110,6 +113,7 @@ class UUV(UnmannedVehicle, UnderseaVehicle):
 
     def status(self):
         print('Unmanned Undersea Vehicle')
+
 
 
 uav = UAV()

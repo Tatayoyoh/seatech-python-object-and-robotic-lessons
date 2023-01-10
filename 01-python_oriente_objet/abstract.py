@@ -1,20 +1,35 @@
-from abc import ABC, ABCMeta
-from abc import abstractmethod, abstractproperty
-from abc import abstractclassmethod, abstractstaticmethod
 import time
+import zoneinfo
+from abc import ABCMeta
+from abc import abstractmethod
 
 class TimeRobot(metaclass=ABCMeta):
 
-    @abstractproperty
+    """
+        !!! ATTENTION !!!
+        L'ordre est hyper important :
+        
+        @abstractmethod doit être annoté après les autres décorateurs
+    """
+
+    @property
+    @abstractmethod
     def timezone(self):
         pass
 
-    @abstractclassmethod
-    def change_timezone(cls):
+    @classmethod
+    @abstractmethod
+    def default_timezone(cls):
         pass
 
-    @abstractstaticmethod
+    @staticmethod
+    @abstractmethod
     def whattime():
+        pass
+
+    @timezone.setter
+    @abstractmethod
+    def timezone(self):
         pass
 
     @abstractmethod
@@ -22,27 +37,46 @@ class TimeRobot(metaclass=ABCMeta):
         pass
 
 class Robot(TimeRobot):
-    timezone = 'Europe/Paris'
+    __timezone = 'Europe/London'
 
-    def change_timezone(cls, timezone):
-        cls.timezone = timezone
+    @property
+    def timezone(self):
+        return self.__timezone 
 
+    @classmethod
+    def default_timezone(cls):
+        return cls.__timezone
+
+    @staticmethod
     def whattime():
         print('We are', time.asctime())
 
+    @timezone.setter
+    def timezone(self, timezone):
+        if timezone in zoneinfo.available_timezones():
+            self.__timezone = timezone
+        else:
+            raise Exception('Oops, unavailable time !')
+
     def mission(self):
-        print('Timezone :', self.timezone)
-        print('Start Robot missions...')
+        print('Start Robot mission : travel in time...')
+        print('Original    Timezone :', self.default_timezone())
+        print('Destination Timezone :', self.timezone)
 
 
 if __name__ == '__main__':
+    
     try: # Can not use TimeRobot as object !
         rob = TimeRobot()
-    except Exception as e:
-        print(e,'\n')
+    except TypeError as e:
+        print(e)
     
     rob = Robot()
+
+    print()
     Robot.whattime()
-    rob.change_timezone('America/Montreal')
+    print()
+
+    rob.timezone = 'America/Montreal'
     rob.mission()
 
