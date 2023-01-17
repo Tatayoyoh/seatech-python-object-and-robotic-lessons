@@ -1,6 +1,9 @@
 from controller import Keyboard
 from SeatechSupervisor import SeatechSupervisor
 
+KEYBOARD_SAMPLING_PERIOD = 200
+TIME_STEP = 64
+
 def help_text():
     print('Which mode do you want to play ?')
     print('[A] Single random controller')
@@ -10,11 +13,10 @@ def help_text():
     print('Enter your choice :')
 
 if __name__ == '__main__':
-    TIME_STEP = 64
     supervisor = SeatechSupervisor()
 
     keyboard = Keyboard()
-    keyboard.enable(samplingPeriod=200)
+    keyboard.enable(KEYBOARD_SAMPLING_PERIOD)
 
     print('Student folder:', supervisor.students_folder)
     help_text()

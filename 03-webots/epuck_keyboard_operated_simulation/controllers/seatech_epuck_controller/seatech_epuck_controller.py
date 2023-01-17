@@ -1,6 +1,9 @@
 from controller import Keyboard
 from SeatechEpuckRobot import SeatechEpuckRobot
 
+TIME_STEP = 64
+KEYBOARD_SAMPLING_PERIOD = 200
+
 def get_keybord_pressed_keys():
     pressed_keys = []
     current_key = keyboard.getKey()
@@ -10,14 +13,12 @@ def get_keybord_pressed_keys():
     return pressed_keys
 
 if __name__ == '__main__':
-    TIME_STEP = 64
-
     # create the Robot instance.
     robot = SeatechEpuckRobot()
 
     # Init keybopard control
     keyboard = Keyboard()
-    keyboard.enable(samplingPeriod=200) # samplingPeriod in milliseconds
+    keyboard.enable(KEYBOARD_SAMPLING_PERIOD) # samplingPeriod in milliseconds
 
     print('Use UP/DOWN and LEFT/RIGHT keys to move E-Puck Robot')
 

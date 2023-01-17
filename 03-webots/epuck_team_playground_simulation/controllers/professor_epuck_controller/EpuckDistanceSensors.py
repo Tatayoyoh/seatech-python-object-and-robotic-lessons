@@ -1,9 +1,11 @@
 from controller import DistanceSensor
 
+DISTANCE_SENSIOR_SAMPLING_PERIOD = 50
+
 class EpuckDistanceSensor(DistanceSensor):
     def __init__(self, name):
         DistanceSensor.__init__(self, name)
-        self.enable(samplingPeriod=50)
+        self.enable(DISTANCE_SENSIOR_SAMPLING_PERIOD)
 
 class EpuckDistanceSensors():
     DISTANCE_THRESHOLD = 78
