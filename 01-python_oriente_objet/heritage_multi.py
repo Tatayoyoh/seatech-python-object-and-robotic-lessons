@@ -37,7 +37,7 @@ class Cyborg(Robot, Human):
 
     def dance_funk(self):
         print("Let's dance !!")
-        print("https://youtu.be/cZzK32Cfcq8")
+        print("https://youtu.be/dhqcuA1wSqI")
         for x in range(3):
             sys.stdout.write('╘[◉﹃◉]╕\r')
             sys.stdout.flush()
